@@ -7,14 +7,14 @@ from bs4 import BeautifulSoup
 
 
 def get_max_file_num(language, folder):
-    file_list = listdir(f'{language}/{folder}')
+    file_list = listdir(f'{path}/{language}/{folder}')
     if len(file_list):
         return len(file_list)-1
     return -1
 
 
 def get_list_of_folder(language):
-    return sorted([f for f in listdir(language) if f[0] != '.'])
+    return sorted([f for f in listdir(f"{path}/{language}") if f[0] != '.'])
 
 # save and load functions
 
@@ -108,7 +108,7 @@ for fol in folder_list[folder_start:]:
     max_num = (get_max_file_num(language, fol))
     while num <= max_num:
         dic = get_first_paragraf(
-            f"{language}/{fol}/{'wiki_'+str(num).zfill(2)}", dictionary=dic)
+            f"{path}/{language}/{fol}/{'wiki_'+str(num).zfill(2)}", dictionary=dic)
         save(dic, f"{fol}_{str(num).zfill(2)}")
         num += 1
     num = 0
