@@ -21,16 +21,16 @@ def get_list_of_folder(language):
 
 def save(dictionary, checkpoint):
     print(checkpoint)
-    with open(f'{path}/{language}/dump.pickle', 'wb') as handle:
+    with open(f'{path}/{language}-dump.pickle', 'wb') as handle:
         pickle.dump(dictionary, handle)
-    with open('data_dir/checkpoint', 'w') as txtfile:
+    with open(f'{path}/{language}-checkpoint', 'w') as txtfile:
         print(checkpoint, file=txtfile)
 
 
 def load():
-    with open(f'{path}/{language}/checkpoint', 'r') as file:
+    with open(f'{path}/{language}-checkpoint', 'r') as file:
         checkpoint = file.read().strip()
-    with open(f'{path}/{language}/dump.pickle', 'rb') as handle:
+    with open(f'{path}/{language}-dump.pickle', 'rb') as handle:
         dictionary = pickle.load(handle)
     return dictionary, checkpoint
 
